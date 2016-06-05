@@ -1,0 +1,22 @@
+{
+  "name": "michelleheh",
+  "version": "1.0.0",
+  "description": "Michelle's perosnal site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelleheh/michelleheh.com.git"
+  },
+  "author": "Michelle He",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michelleheh/michelleheh.com/issues"
+  },
+  "homepage": "https://github.com/michelleheh/michelleheh.com#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
