@@ -1,0 +1,7 @@
+li .cirle
+{
+ background-color: grey;
+ border-radius: 50%;
+ border: 1x solid white;
+ padding:10px;
+}
