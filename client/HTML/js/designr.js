@@ -119,9 +119,9 @@ $(document).ready(function() {
 	});
 
 	/*============================================
-	Project Preview
+	Project Preview - web
 	==============================================*/
-	$('.project-item').click(function(e){
+	$('.project-item.web-apps').click(function(e){
 		e.preventDefault();
 
 		var elem = $(this),
@@ -139,7 +139,7 @@ $(document).ready(function() {
 		slidesHtml = slidesHtml + '</ul>';
 		
 
-		$('#project-modal').on('show.bs.modal', function () {
+		$('#project-modal-web').on('show.bs.modal', function () {
 			$(this).find('h1').text(title);
 			$(this).find('.btn').attr('href',link);
 			$(this).find('.project-descr').html(descr);
@@ -151,7 +151,7 @@ $(document).ready(function() {
 					animation: 'slide',
 					controlNav: false,
 					start: function(){
-						$('#project-modal .image-wrapper')
+						$('#project-modal-web .image-wrapper')
 						.addClass('done')
 						.prev('.loader').fadeOut();
 					}
@@ -161,7 +161,7 @@ $(document).ready(function() {
 		
 	});
 
-	$('#project-modal').on('hidden.bs.modal', function () {
+	$('#project-modal-web').on('hidden.bs.modal', function () {
 		$(this).find('.loader').show();
 		$(this).find('.image-wrapper')
 			.removeClass('flexslider')
@@ -169,7 +169,59 @@ $(document).ready(function() {
 			.html('')
 			.flexslider('destroy');
 	});
-	
+
+	/*============================================
+	Project Preview - mobile
+	==============================================*/
+	$('.project-item.mobile-apps').click(function(e){
+		e.preventDefault();
+
+		var elem = $(this),
+			title = elem.find('.project-title').text(),
+			link = elem.attr('href'),
+			descr = elem.find('.project-description').html(),
+			slidesHtml = '<ul class="slides">',
+
+			slides = elem.data('images').split(',');
+
+		for (var i = 0; i < slides.length; ++i) {
+			slidesHtml = slidesHtml + '<li><img src='+slides[i]+' alt=""></li>';
+		}
+		
+		slidesHtml = slidesHtml + '</ul>';
+		
+
+		$('#project-modal-mobile').on('show.bs.modal', function () {
+			$(this).find('h1').text(title);
+			$(this).find('.btn').attr('href',link);
+			$(this).find('.project-descr').html(descr);
+			$(this).find('.image-wrapper-mobile').addClass('flexslider').html(slidesHtml);
+			
+			setTimeout(function(){
+				$('.image-wrapper-mobile.flexslider').flexslider({
+					slideshowSpeed: 2000,
+					animation: 'slide',
+					controlNav: false,
+					start: function(){
+						$('#project-modal-mobile .image-wrapper-mobile')
+						.addClass('done')
+						.prev('.loader').fadeOut();
+					}
+				});
+			},1000);
+		}).modal();
+		
+	});
+
+	$('#project-modal-mobile').on('hidden.bs.modal', function () {
+		$(this).find('.loader').show();
+		$(this).find('.image-wrapper-mobile')
+			.removeClass('flexslider')
+			.removeClass('done')
+			.html('')
+			.flexslider('destroy');
+	});
+
 	/*============================================
 	Twitter Functions
 	==============================================*/
