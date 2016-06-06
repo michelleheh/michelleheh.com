@@ -10,11 +10,10 @@ const transporter = nodemailer.createTransport(ses({
 
 // Handle conctact
 const contact = (req, res) => {
-  console.log('--> req', req.body)
   // setup e-mail data with unicode symbols 
   const mailOptions = {
-      from: '"michelleheh.com 👥" <fishfishher@gmail.com>', // sender address 
-      to: 'fishfishher@gmail.com', // list of receivers 
+      from: `"michelleheh.com 👥" <${env.email}>`, // sender address 
+      to: env.email, // list of receivers 
       subject: `michelleheh.com: ${req.body.contactName}`, // Subject line
       html: `<span>You got a message from ${req.body.email}</span>
             <p>${req.body.comments}<br>- ${req.body.contactName}</p>` // html body 
@@ -24,7 +23,7 @@ const contact = (req, res) => {
       if(error){
           return console.log(error);
       }
-      console.log('Message sent: ' + info);
+      console.log('Message sent!');
   });
 
   res.send('post requst to contatct');
